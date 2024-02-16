@@ -1,14 +1,10 @@
 #!/usr/bin/python
 
 import fileinput
+import re
 
 tot=0
 for line in fileinput.input():
-    first=''
-    for p in line:
-        if p >= '0' and p <= '9':
-            if first == '':
-                first=p
-            last=p
-    tot = tot + int(first+last)
+    x=re.findall('\d',line)
+    tot += int (x[0] + x[-1])
 print(tot)
